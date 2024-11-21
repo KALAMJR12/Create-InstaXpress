@@ -1,0 +1,436 @@
+*{
+    border: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-color: rgba(243, 236, 236, 0.829);
+    color: #333;
+}
+/* Main Header */
+header {
+  background-color: #05a73b; /* Amazon-like dark blue */
+  color: white;
+  padding: 10px 10px;
+  display: flex;
+  align-items: center;
+  width: 100vw;
+  height: 90px;
+  z-index: 1000;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Logo */
+header #logo {
+  font-size: 1.8em;
+  font-weight: bold;
+  color: #fffdfb; /* Amazon's signature orange */
+  padding-left: 15px;
+}
+
+/* Search Bar */
+header .search-bar {
+  display: flex;
+  flex-grow: 1;
+  max-width: 600px;
+  margin: 0 20px;
+}
+
+header .search-bar input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px 0 0 5px;
+  border: none;
+  outline: none;
+}
+
+header .search-bar button {
+  padding: 10px 15px;
+  background: linear-gradient(45deg,#03442e,#2ECC71,#B0F748);text-align: center;border-radius: 40px;
+  color: white;
+  border: none;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+}
+
+/* Navbar Links */
+header .navbar a {
+  color: white;
+  font-weight: lighter;
+  font-size: 16px;
+  padding: 10px 15px;
+  text-decoration: none;
+}
+
+header .navbar a:hover {
+  background-color: #232F3E; /* Slightly lighter dark blue */
+}
+
+/* Account and Cart */
+header div[style*="float: right;"] {
+  display: flex;
+  align-items: center;
+}
+
+header div[style*="float: right;"] a {
+  margin-right: 10px;
+  color: white;
+  font-size: 16px;
+  text-decoration: none;
+}
+
+header div[style*="float: right;"] a:hover {
+  background-color: #232F3E; /* Slightly lighter dark blue */
+  color:#05a73b; /* Highlight in orange */
+}
+
+/* Responsive Hamburger for Mobile */
+@media (max-width: 768px) {
+  header {
+      flex-direction: column;
+      align-items: flex-start;
+  }
+  .search-bar {
+      width: 100%;
+      margin-top: 10px;
+  }
+  .navbar {
+      display: none;
+       margin-left: 0px;
+       margin-right: 0px;
+
+  }
+}
+.search-bar {
+  margin: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.search-bar input[type="text"] {
+  width: 300px;
+  padding: 10px;
+  border: 2px solid #4CAF50;
+  border-radius: 5px 0 0 5px;
+  border-right: 0;
+  outline: none;            
+   /*On starting to type it creates balck border by default,so to avoid it v use this*/
+}
+
+.search-bar button {
+  padding: 10px 20px;
+  border: 2px solid #18c71e;
+  border-left: 0;
+  background-color: #308133;
+  color: white;
+  cursor: pointer;
+  border-radius: 0 5px 5px 0;
+}
+
+.search-bar button:hover {
+  background-color: #99c49b;
+}
+/* Show dropdown content on hover */
+.categories-dropdown:hover .dropdown-content {
+  display: block;
+  margin-top: 15px;
+}
+
+/* Style for the dropdown links */
+.dropdown-content a:hover {
+  background-color: #faf9f9; /* Slight hover effect */
+}
+
+/* Additional styling for positioning */
+.categories-dropdown {
+  position: relative;
+  position: relative; 
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none; /* Hidden by default */
+  position: absolute;
+  top: 100%; /* Positions below the "Categories" link */
+  left: 0;
+  background-color: rgb(187, 178, 178);
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+}
+
+.sell-item-container {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.sell-item-container h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.sell-item-container label {
+  font-weight: bold;
+}
+
+.sell-item-container input, 
+.sell-item-container textarea, 
+.sell-item-container select {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.sell-item-container button {
+  width: 100%;
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.sell-item-container button:hover {
+  background-color: #45a049;
+}
+
+#accountLink {
+  position: relative;
+  display: inline-block;
+}
+
+.accountOptions a:hover{
+  background-color: #faf9f9
+}
+ 
+#accountOptions {
+  display: none;
+  overflow: hidden;
+  width: 150px;
+  border-radius: 5px;right: 100px;
+  margin-top: 15px;
+  margin-left: 250px;
+  position:absolute;
+  background-color: rgb(214, 200, 200);
+  color: black; 
+  padding: 10px;
+  z-index: 1000;
+}
+
+/* Categories page */
+.category {
+  margin: 20px 0;
+}
+
+.category h2 {
+  color: #308133;
+  font-size: 1.8em;
+}
+
+.product-list {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.product {
+  width: 200px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.product img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* Hero Section Styling */
+.hero-section {
+  position:relative;
+  height: 250px;
+  overflow: hidden;
+  margin-top: 1px; /* Adjust this if needed to ensure hero section appears below the header */
+  z-index: index 2000; ;
+}
+
+/* Container for the entire slider */
+.slider {
+  display: flex;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.slide {
+  min-width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 10s ease;
+
+}
+
+.slide.active {
+  opacity: 1;
+}
+
+.slideshow-container {
+  padding-top: 1px;
+  margin-inline-start: 25px;
+  display: inline-flex;
+  justify-content:center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.slideshow {
+  position: relative;
+  width: 280px;
+  height: 300px;
+  overflow: hidden;
+  border-radius: none;
+  border: 2px solid #ddd;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.slideshow-image {
+  position:absolute;
+  width: 100%;
+  height: 100%;
+  margin-left: 0px;
+  background-size:cover;
+}
+.image1 { background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVwGVsuaL7RGKo6A_Sqq83s5_6XYFMhHsjug&s'); 
+  }
+.image4 { background-image: url('https://5.imimg.com/data5/WS/NI/FV/SELLER-11710265/mad-maxx-bicycles-avengers-single-kids-cycle-500x500.jpg');
+  }
+.image7 { background-image: url('https://5.imimg.com/data5/SELLER/Default/2021/8/HZ/XR/AC/8962391/household-vacuum-cleaner-500x500.jpg');
+  }
+  .image8 { background-image: url('https://i.pinimg.com/564x/00/72/6f/00726ffb4eaff0331a97675400ec0e82.jpg');
+  }
+  .image9 { background-image: url('https://i.pinimg.com/474x/cd/e2/0c/cde20c026bd46f184f85bd83d4f051a0.jpg');
+  }
+
+@keyframes fade1 {
+0%, 33.33% { opacity: 1; }
+33.34%, 100% { opacity: 0; }
+}
+@keyframes fade2 {
+0%, 33.33% { opacity: 0; }
+33.34%, 66.66% { opacity: 1; }
+66.67%, 100% { opacity: 0; }
+}
+@keyframes fade3 {
+0%, 66.66% { opacity: 0; }
+66.67%, 100% { opacity: 1; }
+}
+
+
+.product-listings {
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 25px;
+  border: 5px solid #4CAF50;
+  border-radius: none;
+  padding: 25px;
+}
+
+.product {
+  background-color: white;
+  border: 2px solid #e0e0e0;
+  border-radius: 10px;
+  margin: 30px;
+  padding: 15px;
+  width: 220px;
+  text-align: center;
+  transition: transform 0.5s, box-shadow 0.3s;
+}
+.product:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transform: scale(1.05);
+}
+
+.product img {
+  max-width: 100%;
+  border-bottom: 1px solid #e0e0e0;
+  margin-bottom: 10px;
+}
+
+.product-info h2 {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+  color: #4CAF50;
+}
+
+.product-info p {
+  font-size: 1em;
+  color: #777;
+}
+
+
+.footer {
+  background-color: #4CAF50;
+  color: white;
+  text-align: center;
+  padding: 20px 0;
+  margin-top: 40px;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.footer-column {
+  width: 30%;
+  margin: 10px;
+}
+
+.footer-column h3 {
+  border-bottom: 2px solid #fff;
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+}
+
+.footer-column ul {
+  list-style-type: none;
+}
+
+.footer-column ul li {
+  margin: 10px ;
+}
+
+.footer-column ul li a {
+  color: white;
+  text-decoration: none;
+}
+
+.footer-column p {
+  margin-top: 10px;
+}
+
+.footer-column .social-icons {
+  margin-top: 10px;
+}
+
+.footer-column .social-icons a {
+  color: white;
+  text-decoration: none;
+  margin: 0 10px;
+  font-size: 20px;
+}

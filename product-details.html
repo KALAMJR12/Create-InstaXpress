@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Font Awesome for star icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+
+    <!-- Section for Product Details -->
+    <section id="product-section">
+        <h2 id="productName">Product Name</h2>
+        <img id="productImage" src="" alt="Product Image" style="width:300px; height:300px;">
+        <p id="productDescription">Product Description</p>
+        <p id="productPrice">Price: </p>
+        <div id="productRating" class="rating-stars">
+            <!-- Star icons will be dynamically added here -->
+        </div>
+    </section>
+
+    <!-- Divider between product and grammy details -->
+    <hr>
+
+    <!-- Section for Grammy Details -->
+    <section id="grammy-section">
+        <h2 id="grammyTitle">Grammy Product Title</h2>
+        <img id="grammyImage" src="" alt="Grammy Product Image" style="width:300px; height:300px;">
+        <p id="grammyDescription">Grammy Product Description</p>
+        <p id="grammyPrice">Price: </p>
+    </section>
+
+    <!-- JavaScript to load product and grammy details -->
+    <script src="script.js"></script>
+
+</body>
+</html>
+
+
+    <script>
+        // Function to load product details based on the 'product' parameter in the URL
+        function loadProductDetails() {
+            const products = {
+                'lg-dishwasher': {
+                    name: 'LG Dishwasher',
+                    price: 'N 10,000',
+                    description: 'High-efficiency LG dishwasher with smart features.',
+                    image: 'https://www.lg.com/content/dam/channel/wcms/in/images/dishwasher/dfb532fp_apzpeil_eail_in_c/DFB532FP-Dishwasher-front-view-350.jpg',
+                    rating: 4.5
+                },
+                'haier-refrigerator': {
+                    name: 'Haier Refrigerator',
+                    price: 'N 15,000',
+                    description: 'Spacious and energy-efficient refrigerator.',
+                    image: 'https://sathya.in/media/87913/catalog/2-35.jpg',
+                    rating: 4
+                },
+                // More products can be added here...
+            };
+    
+            const urlParams = new URLSearchParams(window.location.search);
+            const productID = urlParams.get('product');
+            if (productID && products[productID]) {
+                const productData = products[productID];
+                document.getElementById('productImage').src = productData.image;
+                document.getElementById('productName').innerText = productData.name;
+                document.getElementById('productPrice').innerText = productData.price;
+                document.getElementById('productDescription').innerText = productData.description;
+    
+                // Add star ratings
+                const productRating = document.getElementById('productRating');
+                const fullStars = Math.floor(productData.rating);
+                const halfStar = productData.rating % 1 >= 0.5;
+                productRating.innerHTML = ''; // Clear previous stars
+    
+                for (let i = 0; i < fullStars; i++) {
+                    const star = document.createElement('i');
+                    star.classList.add('fa', 'fa-star');
+                    productRating.appendChild(star);
+                }
+                if (halfStar) {
+                    const halfStarElement = document.createElement('i');
+                    halfStarElement.classList.add('fa', 'fa-star-half-o');
+                    productRating.appendChild(halfStarElement);
+                }
+                for (let i = 0; i < 5 - fullStars - (halfStar ? 1 : 0); i++) {
+                    const emptyStar = document.createElement('i');
+                    emptyStar.classList.add('fa', 'fa-star-o');
+                    productRating.appendChild(emptyStar);
+                }
+            }
+        }
+    
+        // Function to load grammy details based on the 'grammy' parameter in the URL
+        function loadGrammyDetails() {
+            const grammys = {
+                grammy1: {
+                    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVwGVsuaL7RGKo6A_Sqq83s5_6XYFMhHsjug&s',
+                    title: 'Iphone 11',
+                    description: 'Clean Iphone 11 for you',
+                    price: 'N10,000'
+                },
+                grammy2: {
+                    image: 'https://5.imimg.com/data5/WS/NI/FV/SELLER-11710265/mad-maxx-bicycles-avengers-single-kids-cycle-500x500.jpg',
+                    title: 'Bicycle',
+                    description: 'Student Bicycle',
+                    price: 'N12,000'
+                },
+                grammy3: {
+                    image: 'https://5.imimg.com/data5/SELLER/Default/2021/8/HZ/XR/AC/8962391/household-vacuum-cleaner-500x500.jpg',
+                    title: 'Vacuum Cleaner',
+                    description: 'Great for your homes',
+                    price: 'N52,000'
+                }
+            };
+    
+            const urlParams = new URLSearchParams(window.location.search);
+            const grammyId = urlParams.get('grammy');
+            if (grammys[grammyId]) {
+                document.getElementById('grammyImage').src = grammys[grammyId].image;
+                document.getElementById('grammyTitle').innerText = grammys[grammyId].title;
+                document.getElementById('grammyDescription').innerText = grammys[grammyId].description;
+                document.getElementById('grammyPrice').innerText = grammys[grammyId].price;
+            }
+        }
+    
+        // Run both functions on page load
+        window.onload = function () {
+            loadProductDetails();
+            loadGrammyDetails();
+        };
+    </script>
+    
+
+</body>
+</html>
+
+
+
+
+
